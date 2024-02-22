@@ -34,7 +34,7 @@ main {
     background-color: #eaeaea;
 }
 
-.left-header .profile, .left-header .icons {
+.left-header .profile, .icons  {
     display: flex;
     align-items: center;
 
@@ -43,17 +43,44 @@ main {
     padding: 10px;
 }
 
-#aside .left-header .icons .fa-solid {
-   color: #B1B1B1; ;
+.contact {
+    display: flex;
+    gap: 15px;
+}
+.contact .contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+.contact .contact-info .contact-name {
+    font-weight: bold;
+    font-size: 18px;
 }
 
-#aside .left-header .profile img {
+.contact .contact-info .last-access {
+    font-size: 13px;
+    color: grey;
+}
+
+
+#aside .left-header .icons .fa-solid, .right-header .icons .fa-solid  {
+    font-size: 23px;
+    color: #B1B1B1; ;
+}
+
+#aside .left-header .profile img, .right-header .contact img {
     height: 100%;
     border-radius: 50%;
 }
 
+ .left-header .profile strong {
+    font-size: 18px;
+}
+
 .right-header {
     border-left: 1.5px solid #B1B1B1;
+    padding: 10px;
 }
 
 
@@ -114,4 +141,62 @@ main {
     
     border: none;
     padding-left: 15px;
+}
+
+
+.chat-items {
+    display: flex;
+    justify-content: space-between;
+
+    height: 100px;
+}
+
+#chat .contact {
+    display: flex;
+}
+
+#chat .contact .chat-photo {
+    height: 100%;
+    padding: 8px 15px;
+}
+
+#chat .contact .chat-photo img {
+    height: 100%;
+    border-radius: 50%;
+}
+
+.contact .info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.contact .info .contact-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.contact .info .last-message {
+    font-size: 13px;
+    color: lightgrey;
+}
+
+.hour {
+    padding: 15px;
+    font-size: 13px;
+    color: lightgray;
+}
+
+.send-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
