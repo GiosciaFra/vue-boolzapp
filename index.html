@@ -74,7 +74,6 @@
 
                     <div id="chat-list">
                         <div v-for="(contact, index) in searchContact() "  
-                        @click="changeContact(contactIndex)"
                         class="chat-preview"
                             :class="contact == activeContact ? 'active' : ''" 
                             @click="changeActiveContact(index)">
