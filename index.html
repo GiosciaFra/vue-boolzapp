@@ -28,7 +28,7 @@
                 <div id="aside">
 
                     <div class="left-header">
-                        
+
                         <div class="profile">
                             <img src="./img/avatar_1.jpg" alt="Foto profilo">
 
@@ -67,28 +67,18 @@
 
                     </div>
 
-                    <div id="chat">
-                        <div class="chat-items">
-                            <div class="contact">
-                                <div class="chat-photo">
-                                    <img src="./img/avatar_4.jpg" alt="">
-                                </div>
-                                <div class="info">
-                                    <span class="contact-name">Pippo</span>
-
-                                    <span class="last-message">
-                                        Ultimo mex inviato
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="hour">
-                                <span>12:00</span>
-
+                    <div id="chat-list">
+                   <div v-for="contact in contacts" class="chat-preview">
+                            <img class="user-pic" :src="contact.avatar" alt="">
+                            <div>
+                                <div class="user-name">{{ contact.name }}</div>
+                                <div class="last-message">Ultimo messaggio inviato</div>
+                                <div class="last-message-time">12:00</div>
                             </div>
                         </div>
-                    </div>
 
+
+                    </div>
                 </div>
 
                 <main>
@@ -109,44 +99,45 @@
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
 
-                        <div id="active-chat">
+                        
+                    </div>
 
-                            <div class="container">
+                    <div id="active-chat">
 
-                                <div class="message sent">
-                                    <div class="text">
-                                        Hai portato a spasso il cane?
-                                    </div>
-                                    <div class="time">
-                                        12:00
-                                    </div>
+                        <div class="container">
+
+                            <div class="message sent">
+                                <div class="text">
+                                    Hai portato a spasso il cane?
                                 </div>
-
-                                <div class="message sent">
-                                    <div class="text">
-                                        Ricordati di stendere i panni
-                                    </div>
-                                    <div class="time">
-                                        12:00
-                                    </div>
+                                <div class="time">
+                                    12:00
                                 </div>
-
-                                <div class="message received">
-                                    <div class="text">
-                                        Tutto fatto!
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ut beatae velit
-                                        voluptates placeat excepturi hic? Aperiam quis similique, laudantium quod in
-                                        quaerat fugiat sit beatae facilis cumque odit ipsam!
-                                    </div>
-                                    <div class="time">
-                                        12:00
-                                    </div>
-                                </div>
-
                             </div>
 
+                            <div class="message sent">
+                                <div class="text">
+                                    Ricordati di stendere i panni
+                                </div>
+                                <div class="time">
+                                    12:00
+                                </div>
+                            </div>
+
+                            <div class="message received">
+                                <div class="text">
+                                    Tutto fatto!
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ut beatae velit
+                                    voluptates placeat excepturi hic? Aperiam quis similique, laudantium quod in
+                                    quaerat fugiat sit beatae facilis cumque odit ipsam!
+                                </div>
+                                <div class="time">
+                                    12:00
+                                </div>
+                            </div>
 
                         </div>
+
 
                     </div>
 
