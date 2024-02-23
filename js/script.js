@@ -198,6 +198,9 @@ createApp({
             activeContact: {},
 
             temporaryActiveContact: null,
+
+            searchName: '',
+            
         }
     },
     
@@ -244,7 +247,24 @@ createApp({
 
             // Pulisco l'input del messaggio
             this.$refs.messageInput.value = '';
-        }
+        },
+
+        searchContact() {
+
+            this.searchName = this.searchName.toLowerCase();
+
+            const filterContacts = this.contacts.filter(contact => {
+
+                const contactName = contact.name.toLowerCase();
+
+                return contactName.includes(this.searchName);
+
+            });
+
+            return filterContacts;
+
+        },
+
 
     }
 }).mount('#app');

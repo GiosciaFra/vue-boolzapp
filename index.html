@@ -61,14 +61,20 @@
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
 
-                            <input type="text" placeholder="Cerca o inizia una nuova chat">
+                            <input type="text" 
+                            placeholder="Cerca o inizia una nuova chat"
+                            v-model="searchName" 
+                            @input="searchContact()" 
+                            type="search"
+                            id="search-contact" >
 
                         </div>
 
                     </div>
 
                     <div id="chat-list">
-                        <div v-for="(contact, index) in contacts" 
+                        <div v-for="(contact, index) in searchContact() "  
+                        @click="changeContact(contactIndex)"
                         class="chat-preview"
                             :class="contact == activeContact ? 'active' : ''" 
                             @click="changeActiveContact(index)">
@@ -130,7 +136,11 @@
                             <i class="fa-regular fa-face-smile"></i>
                         </button>
 
-                        <input ref="messageInput" type="text" placeholder="Scrivi messaggio" @keyup.enter="sendMessage($event.target.value)">
+                        <input ref="messageInput"
+                         type="text" 
+                         placeholder="Scrivi messaggio" 
+                         @keyup.enter="sendMessage($event.target.value)"
+                         id="type-message">
 
                         <button>
                             <i class="fa-solid fa-microphone"></i>
