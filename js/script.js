@@ -196,6 +196,8 @@ createApp({
             ],
 
             activeContact: {},
+
+            temporaryActiveContact: null,
         }
     },
     
@@ -210,14 +212,21 @@ createApp({
 
         sendMessage(text) {
 
-
+            if (text.trim() === '') {
+                
+                return;
+            }
             const newMessage = {
                 date: new Date().toLocaleString(),
                 message: text,
                 status: 'sent'
             };
+            
+            // Memorizzo temporaneamente la chat attualmente attiva
+            this.temporaryActiveContact = this.activeContact;
 
             this.activeContact.messages.push(newMessage);
+
 
             setTimeout(() => {
                 const responseMessage = {
@@ -225,7 +234,12 @@ createApp({
                     message: 'Ok',
                     status: 'received'
                 };
-                this.activeContact.messages.push(responseMessage);
+
+                // Utilizzo la chat memorizzata temporaneamente per la risposta automatica
+                this.temporaryActiveContact.messages.push(responseMessage);
+
+                // Resetto la chat attualmente attiva
+                this.temporaryActiveContact = null;
             }, 1000);
 
             // Pulisco l'input del messaggio
