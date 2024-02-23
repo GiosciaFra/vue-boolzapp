@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
 
-  <!-- FontAwesome -->
-  <script src="https://kit.fontawesome.com/3de2aa07be.js" crossorigin="anonymous"></script>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/3de2aa07be.js" crossorigin="anonymous"></script>
 
     <!-- style -->
     <link rel="stylesheet" href="./style/style.css">
@@ -17,105 +17,158 @@
 
     <script src="https://unpkg.com/vue@3"></script>
 
-    <div id="app">
+    <div id="app" class="background">
 
-        <div id="container">
-            <div id="aside">
-                <div class="left-header">
-                    <div class="profile">
-                        <img src="./img/avatar_1.jpg" alt="Foto profilo">
+        <div class="back-top"></div>
 
-                      <strong>Francesco</strong> 
-                    </div>
+        <div id="container-wrapper">
 
-                    <div class="icons">
-                        <i class="fa-solid fa-circle-notch"></i>
-                        <i class="fa-solid fa-message"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-                </div>
+            <div id="container">
 
-                <div id="notifications">
-                    <div class="silent-icon">
-                        <i class="fa-solid fa-bell-slash"></i>
-                    </div class>
-                    <div class="text">
-                        <p>
-                            Ricevi notifiche di nuovi messaggi
-                        </p>
-     
-                        <a href="#">Attiva notifiche desktop</a>
-                    </div>
-                </div>
-                
-                <div class="search-bar">
-                    <div class="search-items">
-                        <div class="icon-lens">
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                <div id="aside">
+
+                    <div class="left-header">
+                        
+                        <div class="profile">
+                            <img src="./img/avatar_1.jpg" alt="Foto profilo">
+
+                            <strong>Francesco</strong>
                         </div>
-                        
+
+                        <div class="icons">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+
+                    <div id="notifications">
+                        <div class="silent-icon">
+                            <i class="fa-solid fa-bell-slash"></i>
+                        </div class>
+                        <div class="text">
+                            <p>
+                                Ricevi notifiche di nuovi messaggi
+                            </p>
+
+                            <a href="#">Attiva notifiche desktop</a>
+                        </div>
+                    </div>
+
+                    <div class="search-bar">
+                        <div class="search-items">
+                            <div class="icon-lens">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+
                             <input type="text" placeholder="Cerca o inizia una nuova chat">
-                        
+
+                        </div>
+
+                    </div>
+
+                    <div id="chat">
+                        <div class="chat-items">
+                            <div class="contact">
+                                <div class="chat-photo">
+                                    <img src="./img/avatar_4.jpg" alt="">
+                                </div>
+                                <div class="info">
+                                    <span class="contact-name">Pippo</span>
+
+                                    <span class="last-message">
+                                        Ultimo mex inviato
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="hour">
+                                <span>12:00</span>
+
+                            </div>
+                        </div>
                     </div>
 
                 </div>
 
-                <div id="chat">
-                    <div class="chat-items">
+                <main>
+                    <div class="right-header">
                         <div class="contact">
-                            <div class="chat-photo">
-                                <img src="./img/avatar_4.jpg" alt="">
-                            </div>
-                            <div class="info">
+                            <img src="./img/avatar_4.jpg" alt="">
+
+                            <div class="contact-info">
                                 <span class="contact-name">Pippo</span>
 
-                                <span class="last-message">
-                                    Ultimo mex inviato
-                                </span>
+                                <span class="last-access">Ultimo accesso oggi alle 12:00</span>
                             </div>
                         </div>
 
-                        <div class="hour">
-                            <span>12:00</span>
+                        <div class="icons">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+
+                        <div id="active-chat">
+
+                            <div class="container">
+
+                                <div class="message sent">
+                                    <div class="text">
+                                        Hai portato a spasso il cane?
+                                    </div>
+                                    <div class="time">
+                                        12:00
+                                    </div>
+                                </div>
+
+                                <div class="message sent">
+                                    <div class="text">
+                                        Ricordati di stendere i panni
+                                    </div>
+                                    <div class="time">
+                                        12:00
+                                    </div>
+                                </div>
+
+                                <div class="message received">
+                                    <div class="text">
+                                        Tutto fatto!
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ut beatae velit
+                                        voluptates placeat excepturi hic? Aperiam quis similique, laudantium quod in
+                                        quaerat fugiat sit beatae facilis cumque odit ipsam!
+                                    </div>
+                                    <div class="time">
+                                        12:00
+                                    </div>
+                                </div>
+
+                            </div>
+
 
                         </div>
+
                     </div>
-                </div>
+
+                    <div id="message-bar">
+                        <button>
+                            <i class="fa-regular fa-face-smile"></i>
+                        </button>
+
+                        <input type="text" placeholder="Scrivi messaggio">
+
+                        <button>
+                            <i class="fa-solid fa-microphone"></i>
+                        </button>
+                    </div>
+                </main>
+
+
 
             </div>
 
-            <main>
-                <div class="right-header">
-                    <div class="contact">
-                        <img src="./img/avatar_4.jpg" alt="">
-
-                        <div class="contact-info">
-                            <span class="contact-name">Pippo</span>
-
-                            <span class="last-access">Ultimo accesso oggi alle 12:00</span>
-                        </div>
-                    </div>
-
-                    <div class="icons">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <i class="fa-solid fa-paperclip"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-
-
-                </div>
-                
-                <div class="send-message">
-                    <i class="fa-regular fa-face-smile"></i>
-                    <input type="text" placeholder="Scrivi un messaggio">
-                    <i class="fa-solid fa-microphone"></i>
-                </div>
-            </main>
-            
-
-            
         </div>
-
+        <div class="back-bottom"></div>
     </div>
 
 
