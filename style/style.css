@@ -269,6 +269,9 @@ main {
     background-color: #d5f9ba;
 
     padding: 18px 16px;
+
+    word-wrap: break-word;
+    max-width: 70%;
 }
 
 .message .time {
