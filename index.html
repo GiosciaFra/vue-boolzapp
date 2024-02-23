@@ -68,7 +68,10 @@
                     </div>
 
                     <div id="chat-list">
-                   <div v-for="contact in contacts" class="chat-preview">
+                        <div v-for="(contact, index) in contacts" 
+                        class="chat-preview"
+                            :class="contact == activeContact ? 'active' : ''" 
+                            @click="changeActiveContact(index)">
                             <img class="user-pic" :src="contact.avatar" alt="">
                             <div>
                                 <div class="user-name">{{ contact.name }}</div>
@@ -84,10 +87,10 @@
                 <main>
                     <div class="right-header">
                         <div class="contact">
-                            <img src="./img/avatar_4.jpg" alt="">
+                            <img :src="activeContact.avatar" alt="">
 
                             <div class="contact-info">
-                                <span class="contact-name">Pippo</span>
+                                <span class="contact-name">{{activeContact.name}}</span>
 
                                 <span class="last-access">Ultimo accesso oggi alle 12:00</span>
                             </div>
@@ -99,42 +102,23 @@
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
 
-                        
+
                     </div>
 
                     <div id="active-chat">
 
                         <div class="container">
 
-                            <div class="message sent">
+                            <div v-for="currentMessage in activeContact.messages" 
+                            class="message"
+                                :class="currentMessage.status">
                                 <div class="text">
-                                    Hai portato a spasso il cane?
-                                </div>
+                                    {{currentMessage.message}} </div>
                                 <div class="time">
-                                    12:00
+                                    {{currentMessage.date}}
                                 </div>
                             </div>
 
-                            <div class="message sent">
-                                <div class="text">
-                                    Ricordati di stendere i panni
-                                </div>
-                                <div class="time">
-                                    12:00
-                                </div>
-                            </div>
-
-                            <div class="message received">
-                                <div class="text">
-                                    Tutto fatto!
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ut beatae velit
-                                    voluptates placeat excepturi hic? Aperiam quis similique, laudantium quod in
-                                    quaerat fugiat sit beatae facilis cumque odit ipsam!
-                                </div>
-                                <div class="time">
-                                    12:00
-                                </div>
-                            </div>
 
                         </div>
 
