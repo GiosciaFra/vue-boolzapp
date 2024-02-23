@@ -90,7 +90,7 @@ main {
 
 .contact {
     display: flex;
-    gap: 55px;
+    gap: 20px;
 }
 .contact .contact-info {
     display: flex;
@@ -188,6 +188,11 @@ main {
     padding-left: 15px;
 }
 
+#chat-list {
+    overflow: auto;
+    height: calc(100% - 205px);
+}
+
 
 #chat-list .chat-preview {
     display: flex;
@@ -231,6 +236,11 @@ main {
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+}
+
+#active-chat {
+    flex-grow: 1;
+    padding-top: 15px;
 }
 
 #active-chat .container {
