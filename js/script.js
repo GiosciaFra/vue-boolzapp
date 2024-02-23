@@ -207,5 +207,30 @@ createApp({
         changeActiveContact(index) {
             this.activeContact = this.contacts[index]
         },
+
+        sendMessage(text) {
+
+
+            const newMessage = {
+                date: new Date().toLocaleString(),
+                message: text,
+                status: 'sent'
+            };
+
+            this.activeContact.messages.push(newMessage);
+
+            setTimeout(() => {
+                const responseMessage = {
+                    date: new Date().toLocaleString(),
+                    message: 'Ok',
+                    status: 'received'
+                };
+                this.activeContact.messages.push(responseMessage);
+            }, 1000);
+
+            // Pulisco l'input del messaggio
+            this.$refs.messageInput.value = '';
+        }
+
     }
 }).mount('#app');

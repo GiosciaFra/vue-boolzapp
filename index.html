@@ -130,7 +130,7 @@
                             <i class="fa-regular fa-face-smile"></i>
                         </button>
 
-                        <input type="text" placeholder="Scrivi messaggio">
+                        <input ref="messageInput" type="text" placeholder="Scrivi messaggio" @keyup.enter="sendMessage($event.target.value)">
 
                         <button>
                             <i class="fa-solid fa-microphone"></i>

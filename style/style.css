@@ -241,6 +241,8 @@ main {
 #active-chat {
     flex-grow: 1;
     padding-top: 15px;
+    overflow: auto;
+    height: auto;
 }
 
 #active-chat .container {
@@ -262,8 +264,6 @@ main {
 
 .message {
     position: relative;
-
-    max-width: 320px;
 
     border-radius: 8px;
     background-color: #d5f9ba;
