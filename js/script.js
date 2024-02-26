@@ -227,8 +227,9 @@ createApp({
             // testo barra di ricerca
             searchName: '',
 
-
-        }
+            //  variabile per gestire lo stato dell'icona
+            isMessageSent: false,
+        };
     },
 
     mounted() {
@@ -258,8 +259,13 @@ createApp({
         },
 
         // invio un messaggio alla chat attiva e simulo un risposta dopo 1s
-        sendMessage(text) {
+        sendMessage() {
 
+            // Ottiengo il riferimento all'elemento dell'input del messaggio
+            const messageInput = this.$refs.messageInput;
+
+            // Ottiengo il testo inserito nell'input del messaggio
+            const text = messageInput.value.trim();
 
             if (text.trim() === '') {
 
@@ -305,8 +311,32 @@ createApp({
 
                 // Resetto la chat attualmente attiva
                 this.temporaryActiveContact = null;
+
+                // Resetto lo stato dopo aver inviato il messaggio
+                this.isMessageSent = false;
+
+                // Riporto l'icona del microfono subito dopo l'invio del messaggio
+                this.$refs.messageInput.focus(); // Focus sull'input
+                this.handleInput(); // Chiamata alla funzione handleInput per gestire l'icona subito
             }, 1000);
 
+        },
+
+
+         // Funzione per gestire l'icona in base al contenuto dell'input
+        handleInput() {
+            this.isMessageSent = this.$refs.messageInput.value.trim() === '';
+        },
+    
+        sendMessageByAirplane() {
+            if (!this.isMessageSent && this.$refs.messageInput.value.trim() !== '') {
+                this.sendMessage();
+
+                // Imposto lo stato di invio del messaggio e resetto l'input
+                this.isMessageSent = true;
+                this.$refs.messageInput.value = '';
+                
+            };
         },
 
         // filtro i contatti in base al testo inserito nella search bar

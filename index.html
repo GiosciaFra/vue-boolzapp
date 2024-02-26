@@ -146,7 +146,8 @@
                     </div>
 
                     <div id="message-bar">
-                        <button>
+                       
+                        <button >
                             <i class="fa-regular fa-face-smile"></i>
                         </button>
 
@@ -154,10 +155,12 @@
                          type="text" 
                          placeholder="Scrivi messaggio" 
                          @keyup.enter="sendMessage($event.target.value)"
+                         @input="handleInput"
                          id="type-message">
 
-                        <button>
-                            <i class="fa-solid fa-microphone"></i>
+                         <button @click="sendMessageByAirplane">
+                            <i v-if="!isMessageSent" class="fa-solid fa-paper-plane"></i>
+                            <i v-else class="fa-solid fa-microphone"></i>
                         </button>
                     </div>
                 </main>
