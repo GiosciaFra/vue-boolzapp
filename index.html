@@ -114,13 +114,28 @@
 
                         <div class="container">
 
-                            <div v-for="currentMessage in activeContact.messages" 
-                            class="message"
-                                :class="currentMessage.status">
+                            <div v-for="(currentMessage, Index) in activeContact.messages" 
+                                class="message"
+                                :class="currentMessage.status"
+                                >
                                 <div class="text">
-                                    {{currentMessage.message}} </div>
+                                    {{currentMessage.message}} 
+                                </div>
                                 <div class="time">
                                     {{currentMessage.date}}
+                                </div>
+                                
+                                <div class="message-options" v-show="currentMessage.showOptions">
+                                    <div class="dropdown-menu" v-if="currentMessage.showOptions">
+                                        
+                                        <div @click.stop="deleteMessage(currentMessage)">
+                                            Elimina messaggio
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="toggle-options-icon" @click.stop="toggleOptions(currentMessage)">
+                                    <i class="fa-solid fa-v"></i>
                                 </div>
                             </div>
 

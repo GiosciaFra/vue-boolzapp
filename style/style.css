@@ -6,6 +6,7 @@
 
 body {
     font-family: sans-serif;
+    user-select: none;
 }
 
 #app {
@@ -326,4 +327,40 @@ main {
     border: transparent;
     border-radius: 6px;
 
+}
+
+.message-options {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 10px;
+    bottom: auto;
+    left: -30px;
+    background-color: #fff;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+    padding: 10px; 
+    z-index: 5; 
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.toggle-options-icon {
+    cursor: pointer;
+}
+
+.toggle-options-icon .fa-solid {
+    font-size: 10px;
+    color: #97928c;
+
+}
+
+.dropdown-menu div {
+    font-size: 12px;
 }

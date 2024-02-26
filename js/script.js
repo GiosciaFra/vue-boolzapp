@@ -24,11 +24,11 @@
 
 
 
-const {createApp} = Vue
+const { createApp } = Vue
 
 createApp({
     data() {
-        return  {
+        return {
             contacts: [
                 {
                     name: 'Michele',
@@ -38,17 +38,20 @@ createApp({
                         {
                             date: '10/01/2020 15:30:55',
                             message: 'Hai portato a spasso il cane?',
-                            status: 'sent'
+                            status: 'sent',
+                             showOptions: false,
                         },
                         {
                             date: '10/01/2020 15:50:00',
                             message: 'Ricordati di stendere i panni',
-                            status: 'sent'
+                            status: 'sent',
+                             showOptions: false,
                         },
                         {
                             date: '10/01/2020 16:15:22',
                             message: 'Tutto fatto!',
-                            status: 'received'
+                            status: 'received',
+                             showOptions: false,
                         }
                     ],
                 },
@@ -60,17 +63,20 @@ createApp({
                         {
                             date: '20/03/2020 16:30:00',
                             message: 'Ciao come stai?',
-                            status: 'sent'
+                            status: 'sent',
+                             showOptions: false,
                         },
                         {
                             date: '20/03/2020 16:30:55',
                             message: 'Bene grazie! Stasera ci vediamo?',
-                            status: 'received'
+                            status: 'received',
+                             showOptions: false,
                         },
                         {
                             date: '20/03/2020 16:35:00',
                             message: 'Mi piacerebbe ma devo andare a fare la spesa.',
-                            status: 'sent'
+                            status: 'sent',
+                             showOptions: false,
                         }
                     ],
                 },
@@ -82,17 +88,20 @@ createApp({
                         {
                             date: '28/03/2020 10:10:40',
                             message: 'La Marianna va in campagna',
-                            status: 'received'
+                            status: 'received',
+                             showOptions: false,
                         },
                         {
                             date: '28/03/2020 10:20:10',
                             message: 'Sicuro di non aver sbagliato chat?',
-                            status: 'sent'
+                            status: 'sent',
+                             showOptions: false,
                         },
                         {
                             date: '28/03/2020 16:15:22',
                             message: 'Ah scusa!',
-                            status: 'received'
+                            status: 'received',
+                             showOptions: false,
                         }
                     ],
                 },
@@ -104,12 +113,14 @@ createApp({
                         {
                             date: '10/01/2020 15:30:55',
                             message: 'Lo sai che ha aperto una nuova pizzeria?',
-                            status: 'sent'
+                            status: 'sent',
+                             showOptions: false,
                         },
                         {
                             date: '10/01/2020 15:50:00',
                             message: 'Si, ma preferirei andare al cinema',
-                            status: 'received'
+                            status: 'received',
+                             showOptions: false,
                         }
                     ],
                 },
@@ -121,12 +132,14 @@ createApp({
                         {
                             date: '10/01/2020 15:30:55',
                             message: 'Ricordati di chiamare la nonna',
-                            status: 'sent'
+                            status: 'sent',
+                             showOptions: false,
                         },
                         {
                             date: '10/01/2020 15:50:00',
                             message: 'Va bene, stasera la sento',
-                            status: 'received'
+                            status: 'received',
+                             showOptions: false,
                         }
                     ],
                 },
@@ -138,17 +151,20 @@ createApp({
                         {
                             date: '10/01/2020 15:30:55',
                             message: 'Ciao Claudia, hai novità?',
-                            status: 'sent'
+                            status: 'sent',
+                             showOptions: false,
                         },
                         {
                             date: '10/01/2020 15:50:00',
                             message: 'Non ancora',
-                            status: 'received'
+                            status: 'received',
+                             showOptions: false,
                         },
                         {
                             date: '10/01/2020 15:51:00',
                             message: 'Nessuna nuova, buona nuova',
-                            status: 'sent'
+                            status: 'sent',
+                             showOptions: false,
                         }
                     ],
                 },
@@ -160,12 +176,14 @@ createApp({
                         {
                             date: '10/01/2020 15:30:55',
                             message: 'Fai gli auguri a Martina che è il suo compleanno!',
-                            status: 'sent'
+                            status: 'sent',
+                             showOptions: false,
                         },
                         {
                             date: '10/01/2020 15:50:00',
                             message: 'Grazie per avermelo ricordato, le scrivo subito!',
-                            status: 'received'
+                            status: 'received',
+                             showOptions: false,
                         }
                     ],
                 },
@@ -177,54 +195,73 @@ createApp({
                         {
                             date: '10/01/2020 15:30:55',
                             message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
+                            status: 'received',
+                             showOptions: false,
                         },
                         {
                             date: '10/01/2020 15:50:00',
                             message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
+                            status: 'sent',
+                             showOptions: false,
                         },
                         {
                             date: '10/01/2020 15:51:00',
                             message: 'OK!!',
-                            status: 'received'
+                            status: 'received',
+                            showOptions: false,
                         }
                     ],
 
-                 
-                }
-            ],
 
+                }
+
+            ],
+            // contatto ATTUALMENTE attivo nella chat
             activeContact: {},
 
+            // contatto TEMPORANEAMENTE attivo per le risposte
             temporaryActiveContact: null,
 
+            // testo barra di ricerca
             searchName: '',
-            
+
+
         }
     },
-    
+
     mounted() {
+        // all'avvio dell'app, imposto il primo contatto come quello attivo di default
         this.activeContact = this.contacts[0]
     },
 
     methods: {
+        // Cambio il contatto attivo quando si fa clic su un contatto nella lista chat
         changeActiveContact(index) {
             this.activeContact = this.contacts[index]
         },
 
+        // invio un messaggio alla chat attiva e simulo un risposta dopo 1s
         sendMessage(text) {
 
+
             if (text.trim() === '') {
-                
+
+                // non invio messaggi vuoti
                 return;
             }
             const newMessage = {
                 date: new Date().toLocaleString(),
                 message: text,
-                status: 'sent'
+                status: 'sent',
+                showOptions: false,
+
             };
-            
+
+            // Nasconde il menu a tendina per tutti i messaggi
+            this.activeContact.messages.forEach(message => {
+                message.showOptions = false;
+            });
+
             // Memorizzo temporaneamente la chat attualmente attiva
             this.temporaryActiveContact = this.activeContact;
 
@@ -235,7 +272,8 @@ createApp({
                 const responseMessage = {
                     date: new Date().toLocaleString(),
                     message: 'Ok',
-                    status: 'received'
+                    status: 'received',
+                    showOptions: false,
                 };
 
                 // Utilizzo la chat memorizzata temporaneamente per la risposta automatica
@@ -249,6 +287,7 @@ createApp({
             this.$refs.messageInput.value = '';
         },
 
+        // filtro i contatti in base al testo inserito nella search bar
         searchContact() {
 
             this.searchName = this.searchName.toLowerCase();
@@ -265,6 +304,44 @@ createApp({
 
         },
 
+        // mostro il menu a tendina dei messaggi
+        showMessageOptions(messageIndex) {
 
-    }
+            this.activeContact.messages.forEach(message => {
+                message.showMessageOptions = false;
+            });
+
+            // mostro il menu a tendina solo per il messaggio cliccato
+            this.activeContact.messages[messageIndex].showOptions = true;
+
+
+        },
+
+        // elimino il messaggio
+        deleteMessage(messageIndex) {
+
+            // rimuovo il messaggio dell'array dei messagi
+            this.activeContact.messages.splice(messageIndex, 1);
+        },
+
+
+        toggleOptions(currentMessage) {
+
+            // inverto lo stato di 'showOptions' per mostrare o nascondere il menu a tendina
+             currentMessage.showOptions = !currentMessage.showOptions;
+        },
+    
+        deleteMessage(currentMessage) {
+
+            //ottengo l'indice del messaggio corrente 
+            const index = this.activeContact.messages.indexOf(currentMessage);
+
+            // verifico se l'indice è valido
+            if (index !== -1) {
+
+                // se è valido rimuovo il mess 
+                this.activeContact.messages.splice(index, 1);
+            }
+        },
+    },
 }).mount('#app');
