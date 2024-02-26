@@ -215,8 +215,38 @@ createApp({
                     ],
 
 
-                }
+                },
+                
+            
+            ],
 
+            // array di risposte possibili del pc
+            pcResponses: [
+                "Va bene!",
+                "Capisco.",
+                "Interessante.",
+                "Molto bene!",
+                "Ecco cosa penso:",
+                "Hai ragione.",
+                "Non sono sicuro di capire completamente, ma va bene.",
+                "Certo!",
+                "Non so cosa dire a riguardo.",
+                "Che bello!",
+                "Hmm, interessante punto di vista.",
+                "Certamente.",
+                "Mi fa piacere sentirlo!",
+                "Hmm, non so cosa dire.",
+                "Ho bisogno di riflettere su questo.",
+                "Mi sembra giusto.",
+                "Ok, andiamo avanti.",
+                "Che notizia interessante!",
+                "Non ci avevo mai pensato.",
+                "Grazie per la tua opinione.",
+                "Posso chiederti di espandere su questo?",
+                "Molto interessante!",
+                "Oh, questa è nuova per me.",
+                "Non sono sicuro di condividere la tua opinione.",
+                "Mi dispiace, non posso rispondere a questo.",
             ],
             // contatto ATTUALMENTE attivo nella chat
             activeContact: {},
@@ -296,7 +326,7 @@ createApp({
             setTimeout(() => {
                 const responseMessage = {
                     date: new Date().toLocaleString(),
-                    message: 'Ok',
+                    message:  this.getRandomPCResponse(),
                     status: 'received',
                     showOptions: false,
                 };
@@ -320,6 +350,12 @@ createApp({
                 this.handleInput(); // Chiamata alla funzione handleInput per gestire l'icona subito
             }, 1000);
 
+        },
+
+       
+        getRandomPCResponse() {
+            const randomIndex = Math.floor(Math.random() * this.pcResponses.length);
+            return this.pcResponses[randomIndex];
         },
 
 
