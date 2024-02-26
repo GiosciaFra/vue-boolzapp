@@ -54,6 +54,8 @@ createApp({
                              showOptions: false,
                         }
                     ],
+                    lastMessage: '', // Ultimo messaggio
+                    lastMessageTime: '' // Orario dell'ultimo messaggio
                 },
                 {
                     name: 'Fabio',
@@ -231,13 +233,28 @@ createApp({
 
     mounted() {
         // all'avvio dell'app, imposto il primo contatto come quello attivo di default
-        this.activeContact = this.contacts[0]
+        this.activeContact = this.contacts[0];
+
+        // Inizializzo i campi lastMessage e lastMessageTime per ogni contatto
+        this.contacts.forEach(contact => {
+        const lastMessage = contact.messages[contact.messages.length - 1];
+        
+        if (lastMessage) {
+            contact.lastMessage = lastMessage.message;
+            contact.lastMessageTime = lastMessage.date;
+        } else {
+            contact.lastMessage = 'Nessun messaggio';
+            contact.lastMessageTime = '';
+        }
+    });
     },
 
     methods: {
         // Cambio il contatto attivo quando si fa clic su un contatto nella lista chat
         changeActiveContact(index) {
-            this.activeContact = this.contacts[index]
+            this.activeContact = this.contacts[index];
+
+            
         },
 
         // invio un messaggio alla chat attiva e simulo un risposta dopo 1s
@@ -267,7 +284,9 @@ createApp({
 
             this.activeContact.messages.push(newMessage);
 
-
+            // Pulisco l'input del messaggio
+            this.$refs.messageInput.value = '';
+            
             setTimeout(() => {
                 const responseMessage = {
                     date: new Date().toLocaleString(),
@@ -279,12 +298,15 @@ createApp({
                 // Utilizzo la chat memorizzata temporaneamente per la risposta automatica
                 this.temporaryActiveContact.messages.push(responseMessage);
 
+                // Aggiorno l'ultimo messaggio nella lista dei contatti
+                this.temporaryActiveContact.lastMessage = responseMessage.message;
+                this.temporaryActiveContact.lastMessageTime = responseMessage.date;
+
+
                 // Resetto la chat attualmente attiva
                 this.temporaryActiveContact = null;
             }, 1000);
 
-            // Pulisco l'input del messaggio
-            this.$refs.messageInput.value = '';
         },
 
         // filtro i contatti in base al testo inserito nella search bar
@@ -341,6 +363,23 @@ createApp({
 
                 // se è valido rimuovo il mess 
                 this.activeContact.messages.splice(index, 1);
+
+                if (index !== -1) {
+                    this.activeContact.messages.splice(index, 1);
+            
+                    // Aggiorna lastMessage e lastMessageTime in base all'ultimo messaggio disponibile
+                    const lastMessage = this.activeContact.messages.length > 0
+                        ? this.activeContact.messages[this.activeContact.messages.length - 1]
+                        : null;
+            
+                    if (lastMessage) {
+                        this.activeContact.lastMessage = lastMessage.message;
+                        this.activeContact.lastMessageTime = lastMessage.date;
+                    } else {
+                        this.activeContact.lastMessage = 'Nessun messaggio';
+                        this.activeContact.lastMessageTime = '';
+                    }
+                }
             }
         },
     },

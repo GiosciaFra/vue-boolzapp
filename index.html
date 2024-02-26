@@ -74,14 +74,14 @@
 
                     <div id="chat-list">
                         <div v-for="(contact, index) in searchContact() "  
-                        class="chat-preview"
+                            class="chat-preview"
                             :class="contact == activeContact ? 'active' : ''" 
                             @click="changeActiveContact(index)">
                             <img class="user-pic" :src="contact.avatar" alt="">
                             <div>
                                 <div class="user-name">{{ contact.name }}</div>
-                                <div class="last-message">Ultimo messaggio inviato</div>
-                                <div class="last-message-time">12:00</div>
+                                <div class="last-message">{{ contact.lastMessage }}</div>
+                                <div class="last-message-time">{{ contact.lastMessageTime }}</div>
                             </div>
                         </div>
 
