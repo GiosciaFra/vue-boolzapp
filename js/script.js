@@ -259,6 +259,8 @@ createApp({
 
             //  variabile per gestire lo stato dell'icona
             isMessageSent: false,
+
+            contactStatus: 'online',
         };
     },
 
@@ -322,6 +324,9 @@ createApp({
 
             // Pulisco l'input del messaggio
             this.$refs.messageInput.value = '';
+
+            // Aggiorna lo stato "sta scrivendo..." quando l'utente sta scrivendo
+            this.contactStatus = 'sta scrivendo...';
             
             setTimeout(() => {
                 const responseMessage = {
@@ -345,6 +350,9 @@ createApp({
                 // Resetto lo stato dopo aver inviato il messaggio
                 this.isMessageSent = false;
 
+                // Risposta automatica del PC
+                this.contactStatus = 'online';
+
                 // Riporto l'icona del microfono subito dopo l'invio del messaggio
                 this.$refs.messageInput.focus(); // Focus sull'input
                 this.handleInput(); // Chiamata alla funzione handleInput per gestire l'icona subito
@@ -352,8 +360,10 @@ createApp({
 
         },
 
+
        
         getRandomPCResponse() {
+            
             const randomIndex = Math.floor(Math.random() * this.pcResponses.length);
             return this.pcResponses[randomIndex];
         },
