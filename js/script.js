@@ -261,6 +261,8 @@ createApp({
             isMessageSent: false,
 
             contactStatus: 'online',
+
+            isDarkMode: false,
         };
     },
 
@@ -280,9 +282,35 @@ createApp({
             contact.lastMessageTime = '';
         }
     });
+
+    {
+        // All'avvio dell'app, controllo se la dark mode è attiva
+        const savedDarkMode = localStorage.getItem('darkMode');
+        this.isDarkMode = savedDarkMode === 'enabled';
+
+        // Applico la classe 'dark-mode' al body se la dark mode è attiva
+        document.body.classList.toggle('dark-mode', this.isDarkMode);
+    }
+
+
+
+    
     },
 
     methods: {
+
+        toggleDarkMode() {
+            // Inverto lo stato della dark mode
+            this.isDarkMode = !this.isDarkMode;
+
+            // Salvo lo stato nel localStorage
+            localStorage.setItem('darkMode', this.isDarkMode ? 'enabled' : 'disabled');
+
+            // Aggiungo/rimuovo la classe dark-mode al body
+            document.body.classList.toggle('dark-mode', this.isDarkMode);
+        },
+
+
         // Cambio il contatto attivo quando si fa clic su un contatto nella lista chat
         changeActiveContact(index) {
             this.activeContact = this.contacts[index];
@@ -415,20 +443,14 @@ createApp({
 
         },
 
-        // elimino il messaggio
-        deleteMessage(messageIndex) {
-
-            // rimuovo il messaggio dell'array dei messagi
-            this.activeContact.messages.splice(messageIndex, 1);
-        },
-
-
+        
         toggleOptions(currentMessage) {
-
+            
             // inverto lo stato di 'showOptions' per mostrare o nascondere il menu a tendina
-             currentMessage.showOptions = !currentMessage.showOptions;
+            currentMessage.showOptions = !currentMessage.showOptions;
         },
-    
+        
+        // elimino il messaggio
         deleteMessage(currentMessage) {
 
             //ottengo l'indice del messaggio corrente 

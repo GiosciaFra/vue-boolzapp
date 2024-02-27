@@ -142,7 +142,6 @@ main {
     justify-content: center;
     align-items: center;
 
-
     background-color: #fff;
     height: 60%;
     border-radius: 50%;
@@ -191,7 +190,7 @@ main {
 
 #chat-list {
     overflow: auto;
-    height: calc(100% - 205px);
+    height: calc(100% - 207px);
 }
 
 
@@ -363,4 +362,89 @@ main {
 
 .dropdown-menu div {
     font-size: 12px;
+}
+
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode .right-header {
+    background-color: #555;
+}
+
+.toggle-dark-mode {
+    cursor: pointer;
+}
+
+.dark-mode .message.sent {
+    background-color: #444;
+    color: #fff;
+}
+
+.dark-mode .message.received
+ {
+    background-color: #7d7d7d;
+    color: #fff;
+}
+
+.dark-mode #notifications .silent-icon .fa-solid {
+    color: #fff;
+
+}
+ 
+.dark-mode .back-bottom {
+    background-color: black;
+}
+
+.dark-mode .back-top {
+    background-color: #242424;
+}
+
+.dark-mode .left-header,
+.dark-mode .right-header,
+.dark-mode .search-bar,
+.dark-mode #chat-list,
+.dark-mode .message-options,
+.dark-mode #message-bar {
+    background-color: #2d2d2d; 
+    border:1px solid rgb(178, 178, 178);
+}
+.dark-mode #notifications {
+    background-color: #595959;
+    border:1px solid rgb(178, 178, 178);
+}
+
+
+.dark-mode #active-chat .container .message .message-options .dropdown-menu {
+    background-color: #242424;
+    color: white;
+}
+
+
+
+.dark-mode #active-chat {
+    background-image: url(../img/dark.jpg);
+    background-size:contain;
+    border:1px solid rgb(178, 178, 178);
+}
+
+
+
+
+.dark-mode #message-bar button {
+    color: #B1B1B1
+}
+
+.dark-mode #chat-list .chat-preview.active,
+.dark-mode #notifications .silent-icon {
+    background-color: #666; 
+}
+.dark-mode #chat-list .chat-preview:hover {
+
+    background-color: #666; 
+}
+
+#chat-list .chat-preview:hover {
+    background-color: #d2d2d2;
 }

@@ -17,13 +17,14 @@
 
     <script src="https://unpkg.com/vue@3"></script>
 
-    <div id="app" class="background">
+    <div id="app" class="background" >
 
         <div class="back-top"></div>
 
         <div id="container-wrapper">
 
             <div id="container">
+
 
                 <div id="aside">
 
@@ -91,6 +92,7 @@
 
                 <main>
                     <div class="right-header">
+                        
                         <div class="contact">
                             <img :src="activeContact.avatar" alt="">
 
@@ -106,6 +108,10 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                             <i class="fa-solid fa-paperclip"></i>
                             <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <div class="toggle-dark-mode" @click="toggleDarkMode">
+                                <i v-if="!isDarkMode" class="fa-solid fa-sun"></i>
+                                <i v-else class="fa-solid fa-moon"></i>
+                            </div>
                         </div>
 
 
